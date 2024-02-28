@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\PassengerSeeder;
+use Database\Seeders\FlightSeeder;
 
 class DatabaseSeeder extends Seeder
 {

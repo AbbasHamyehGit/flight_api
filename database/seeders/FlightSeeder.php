@@ -14,7 +14,7 @@ class FlightSeeder extends Seeder
 
         for ($i = 0; $i < 50; $i++) {
             Flight::create([
-                'number' => $faker->unique()->regexify('[A-Z0-9]{5}'),
+                'number'=> $faker->unique()->regexify('[0-9]{2}[0-9]{3,4}')                ,
                 'departure_city' => $faker->city,
                 'arrival_city' => $faker->city,
                 'departure_time' => $faker->dateTimeBetween('+1 days', '+1 week'),
