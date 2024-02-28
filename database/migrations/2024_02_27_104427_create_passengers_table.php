@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-            $table->string('FirstName');
-            $table->string('LastName');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('DOB');
+            $table->string('date_of_birth');
             $table->string('passport_expiry_date');
             $table->timestamps();
         });
