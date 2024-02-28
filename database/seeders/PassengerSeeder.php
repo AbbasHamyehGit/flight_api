@@ -16,11 +16,11 @@ class PassengerSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 0; $i < 1000; $i++) {
             Passenger::create([
-                'FirstName' => $faker->firstName,
-                'LastName' => $faker->lastName,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'email' => $faker->unique()->safeEmail,
                 'password' => bcrypt('password'), 
-                'DOB' => $faker->date,
+                'date_of_birth' => $faker->date,
                 'passport_expiry_date' => $faker->date,
             ]);
         }

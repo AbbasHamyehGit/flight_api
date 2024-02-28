@@ -14,7 +14,7 @@ return new class extends Migration
 //eparture_time, arrival_time)
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
-            $table->string('number');
+            $table->integer('number')->unique();
             $table->string('departure_city');
             $table->string('arrival_city');
             $table->dateTime('departure_time');
