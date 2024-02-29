@@ -1,11 +1,25 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Passenger extends Model
 {
-    // Define fillable attributes
-    protected $fillable = ['name', 'email'];
+    use HasFactory;
+    
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'date_of_birth',
+        'passport_expiry_date',
+    ];
+    
+    public function flights()
+    {
+        return $this->belongsToMany(Flight::class);
+    }
 }
