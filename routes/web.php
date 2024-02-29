@@ -22,3 +22,4 @@ Route::get('/', function () {
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/flights', [FlightController::class, 'index']);
 Route::get('passengers',[PassengerController::class,'index']);
+Route::get('/flights/{flight}/passengers', [FlightController::class, 'getFlightPassengers']);
