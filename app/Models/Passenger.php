@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Passenger extends Model
 {
-    use HasFactory;
-    public function flights()
-    {
-        return $this->belongsToMany(Flight::class);
-    }
+
+    
+        use HasFactory;
+    
+        protected $guarded = ['id', 'created_at', 'updated_at'];
+    
+        public function flights()
+        {
+            return $this->belongsToMany(Flight::class);
+        }
+    
 }
