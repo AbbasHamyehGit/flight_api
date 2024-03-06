@@ -20,8 +20,15 @@ class FlightController extends Controller
 
     public function show(Request $request, Flight $flight)
     {
-        $passengers = $flight->passengers()->paginate($request->input('per_page', 10));
-
-        return response()->json($passengers);
+        $passengers = $flight->passengers()->paginate($request->input('per_page', 100));
+    
+        // Include flight details along with passengers
+        $flightData = [
+            'flight' => $flight,
+            'passengers' => $passengers,
+        ];
+    
+        return response()->json($flightData);
     }
+    
 }
