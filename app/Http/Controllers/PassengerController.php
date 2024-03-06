@@ -11,7 +11,7 @@ class PassengerController extends Controller
     public function index(Request $request)
     {
         $passengers = QueryBuilder::for(Passenger::class)
-            ->allowedFilters(['first_name', 'last_name'])
+            ->allowedFilters(['id','first_name', 'last_name','date_of_birth','passport_expiry_date'])
             ->allowedSorts(['first_name', 'last_name'])
             ->paginate($request->input('per_page', 10));
 
