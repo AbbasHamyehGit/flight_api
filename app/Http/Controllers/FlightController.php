@@ -13,7 +13,7 @@ class FlightController extends Controller
         $flights = QueryBuilder::for(Flight::class)
             ->allowedSorts(['departure_city', 'arrival_city', 'departure_time', 'arrival_time'])
             ->allowedFilters(['id','departure_city', 'arrival_city', 'departure_time', 'arrival_time','number'])
-            ->paginate($request->input('per_page', 10));
+            ->paginate($request->input('per_page', 100));
 
         return response()->json($flights);
     }

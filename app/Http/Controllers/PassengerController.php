@@ -13,7 +13,7 @@ class PassengerController extends Controller
         $passengers = QueryBuilder::for(Passenger::class)
             ->allowedFilters(['id','first_name', 'last_name','date_of_birth','passport_expiry_date'])
             ->allowedSorts(['first_name', 'last_name'])
-            ->paginate($request->input('per_page', 10));
+            ->paginate($request->input('per_page', 100));
 
         return response()->json($passengers);
     }
