@@ -18,7 +18,7 @@ class FlightSeeder extends Seeder
                 'departure_city' => $faker->city,
                 'arrival_city' => $faker->city,
                 'departure_time' => $faker->dateTimeBetween('+1 days', '+1 week'),
-                'arrival_time' => $faker->dateTimeBetween('+1 days', '+1 week'),
+                'arrival_time' => $faker->dateTimeBetween('departure_time', '+1 day'),
 
             ]);
         }
