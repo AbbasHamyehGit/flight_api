@@ -23,8 +23,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            PassengerSeeder::class,
             FlightSeeder::class,
+            PassengerSeeder::class,
+            
            
         ]);
         // Get all flights
