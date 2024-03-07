@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Crud_Controller;
+use App\Http\Controllers\Flight_Crud_Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FlightController;
@@ -24,4 +24,4 @@ Route::get('/flights', [FlightController::class, 'index']);
 Route::get('/passengers',[PassengerController::class,'index']);
 Route::get('/flights/{flight}/passengers', [FlightController::class, 'show']);
 
-Route::resource('crud', Crud_Controller::class);
+Route::resource('FlightCrud', Flight_Crud_Controller::class);

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Flight;
 
-class Crud_Controller extends Controller
+class Flight_Crud_Controller extends Controller
 {
     public function index()
     {
