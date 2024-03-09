@@ -25,3 +25,4 @@ Route::get('/', function () {
 // Route::get('/flights/{flight}/passengers', [FlightController::class, 'show']);
 
 Route::resource('flights', FlightController::class);
+Route::resource('passengers',PassengerController::class);
