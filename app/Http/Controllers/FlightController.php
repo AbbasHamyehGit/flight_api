@@ -18,17 +18,36 @@ class FlightController extends Controller
         return response()->json($flights);
     }
 
-    public function show(Request $request, Flight $flight)
+    public function store(Request $request)
     {
-        $passengers = $flight->passengers()->get();
-    
-        // Include flight details along with passengers
-        $flightData = [
-            'flight' => $flight,
-            'passengers' => $passengers,
-        ];
-    
-        return response()->json($flightData);
+        $flight = Flight::create($request->all());
+        return response()->json($flight);
     }
     
+
+public function show(Request $request, Flight $flight)
+{
+    $passengers = $flight->passengers()->get();
+
+    // Include flight details along with passengers
+    $flightData = [
+        'flight' => $flight,
+        'passengers' => $passengers,
+    ];
+
+    return response()->json($flightData);
+}
+
+    public function update(Request $request, Flight $flight)
+    {
+        $flight->update($request->all());
+        return $flight;
+        
+    }
+
+    public function destroy(Flight $flight)
+    {
+        $flight->delete();
+        return response()->json(['message' => 'Flight deleted successfully']);
+    }
 }
