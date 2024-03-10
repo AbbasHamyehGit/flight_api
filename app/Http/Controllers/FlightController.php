@@ -25,18 +25,14 @@ class FlightController extends Controller
     }
     
 
-public function show(Request $request, Flight $flight)
-{
-    $passengers = $flight->passengers()->get();
-
-    // Include flight details along with passengers
-    $flightData = [
-        'flight' => $flight,
-        'passengers' => $passengers,
-    ];
-
-    return response()->json($flightData);
-}
+    public function show(Request $request, Flight $flight)
+    {
+        // Eager load passengers along with the flight
+        $flightWithPassengers = $flight->with('passengers')->find($flight->id);
+    
+        return response()->json($flightWithPassengers);
+    }
+    
 
     public function update(Request $request, Flight $flight)
     {
