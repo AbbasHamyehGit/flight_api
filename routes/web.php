@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\PassengerController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::get('/', function () {
 
 Route::resource('flights', FlightController::class);
 Route::resource('passengers',PassengerController::class);
+Route::get('/users/{id}',[UserController::class,'show']);
+Route::post('/users', [UserController::class, 'addUser']);
+Route::put('/users/{id}', [UserController::class, 'updateUser']);
+Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
 
 Route::fallback(function () {
     return view('welcome');
