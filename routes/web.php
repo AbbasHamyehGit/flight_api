@@ -26,3 +26,7 @@ Route::get('/', function () {
 
 Route::resource('flights', FlightController::class);
 Route::resource('passengers',PassengerController::class);
+
+Route::fallback(function () {
+    return view('welcome');
+});
