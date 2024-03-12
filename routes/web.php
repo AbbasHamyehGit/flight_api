@@ -25,7 +25,7 @@ Route::get('/', function () {
 // Route::get('/passengers',[PassengerController::class,'index']);
 // Route::get('/flights/{flight}/passengers', [FlightController::class, 'show']);
 
-Route::resource('flights', FlightController::class)->middleware('auth');
+Route::resource('flights', FlightController::class);//->middleware('auth');
 Route::resource('passengers',PassengerController::class);
 Route::get('/users/{id}',[UserController::class,'show']);
 Route::post('/users', [UserController::class, 'addUser']);
