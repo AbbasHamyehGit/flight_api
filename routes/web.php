@@ -28,9 +28,9 @@ Route::get('/', function () {
 Route::resource('flights', FlightController::class);//->middleware('auth');
 Route::resource('passengers',PassengerController::class);
 Route::get('/users/{id}',[UserController::class,'show']);
-Route::post('/users', [UserController::class, 'addUser']);
-Route::put('/users/{id}', [UserController::class, 'updateUser']);
-Route::delete('/users/{id}', [UserController::class, 'deleteUser']);
+Route::post('/users', [UserController::class, 'store']);
+Route::put('/users/{id}', [UserController::class, 'update']);
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::fallback(function () {
     return view('welcome');
