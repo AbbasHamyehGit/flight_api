@@ -34,10 +34,26 @@ class PassengerController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $passenger = Passenger::create($request->all());
+        // Define validation rules
+        $rules = [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:passengers',
+            'password' => 'required|string|min:8', // You might want to adjust the minimum length
+            'date_of_birth' => 'required|date',
+            'passport_expiry_date' => 'required|date',
+        ];
+    
+        // Validate the incoming request data
+        $validatedData = $request->validate($rules);
+    
+        // Create a new record in the passengers table using validated data
+        $passenger = Passenger::create($validatedData);
+    
+        // Return a JSON response with the created passenger
         return response()->json($passenger);
     }
+    
 
     /**
      * Display the specified resource.
@@ -65,10 +81,26 @@ public function show(string $id)
      */
     public function update(Request $request, Passenger $passenger)
     {
-        $passenger->update($request->all());
-        return $passenger;
-        //
+        // Define validation rules
+        $rules = [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:passengers,email,'.$passenger->id,
+            'password' => 'required|string|min:8', // You might want to adjust the minimum length
+            'date_of_birth' => 'required|date',
+            'passport_expiry_date' => 'required|date',
+        ];
+    
+        // Validate the incoming request data
+        $validatedData = $request->validate($rules);
+    
+        // Update the passenger record with the validated data
+        $passenger->update($validatedData);
+    
+        // Return the updated passenger record
+        return response()->json($passenger);
     }
+    
 
     /**
      * Remove the specified resource from storage.
