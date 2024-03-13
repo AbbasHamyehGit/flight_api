@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Route::resource('flights', FlightController::class);//->middleware('auth');
 Route::resource('passengers',PassengerController::class);
-Route::get('/users/{id}',[UserController::class,'show']);
+Route::get('/users/{user}',[UserController::class,'show']);
 Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);

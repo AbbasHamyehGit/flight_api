@@ -7,9 +7,9 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function show(string $id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);
+    
         return response()->json($user);
     }
 
