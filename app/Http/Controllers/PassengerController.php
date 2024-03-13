@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Passenger;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class PassengerController extends Controller
@@ -11,15 +12,15 @@ class PassengerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+   public function index(Request $request)
     {
         $passengers = QueryBuilder::for(Passenger::class)
-            ->allowedFilters(['id','first_name', 'last_name','date_of_birth','passport_expiry_date'])
+            ->allowedFilters([AllowedFilter::exact('id'),'first_name', 'last_name','date_of_birth','passport_expiry_date'])
             ->allowedSorts(['first_name', 'last_name','date_of_birth','passport_expiry_date'])
             ->paginate($request->input('per_page', 100));
 
         return response()->json($passengers);
-    }
+    } 
 
     /**
      * Show the form for creating a new resource.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Flight;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class FlightController extends Controller
@@ -12,7 +13,7 @@ class FlightController extends Controller
     {
         $flights = QueryBuilder::for(Flight::class)
             ->allowedSorts(['number','departure_city', 'arrival_city', 'departure_time', 'arrival_time'])
-            ->allowedFilters(['id','departure_city', 'arrival_city', 'departure_time', 'arrival_time','number'])
+            ->allowedFilters([AllowedFilter::exact('id'),'departure_city', 'arrival_city', 'departure_time', 'arrival_time','number'])
             ->paginate($request->input('per_page', 100));
 
         return response()->json($flights);
