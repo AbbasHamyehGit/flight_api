@@ -1,15 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
     public function show(User $user)
     {
-    
         return response()->json($user);
     }
 
@@ -22,8 +21,8 @@ class UserController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        // Hash the password
-        $validatedData['password'] = bcrypt($validatedData['password']);
+        // Generate a secure password using the password helper
+        $validatedData['password'] = Str::password();
 
         // Create a new user instance
         $user = User::create($validatedData);
@@ -47,7 +46,7 @@ class UserController extends Controller
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         if ($request->has('password')) {
-            $user->password = bcrypt($validatedData['password']);
+            $user->password = Str::password();
         }
         $user->save();
 
@@ -63,4 +62,3 @@ class UserController extends Controller
         return response()->json(['message' => 'User deleted successfully']);
     }
 }
-
