@@ -61,12 +61,10 @@ class PassengerController extends Controller
    /**
  * Display the specified resource.
  */
-public function show(string $id)
+public function show(Passenger $passenger)
 {
-    $passenger = Passenger::findOrFail($id);
     return response()->json($passenger);
 }
-
 
     /**
      * Show the form for editing the specified resource.

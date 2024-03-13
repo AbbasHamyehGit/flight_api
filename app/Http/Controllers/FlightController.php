@@ -42,13 +42,9 @@ class FlightController extends Controller
     
 
     public function show(Request $request, Flight $flight)
-    {
-        // Eager load passengers along with the flight
-        $flightWithPassengers = $flight->load('passengers');
-    
-        return response()->json($flightWithPassengers);
+    {    
+        return response()->json($flight->load('passengers'));
     }
-    
 
     public function update(Request $request, Flight $flight)
     {
