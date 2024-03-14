@@ -45,13 +45,8 @@ class UserController extends Controller
         'password' => ['nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
     ]);
 
-    // Update user information
+    $validatedData['password'] = bcrypt($request->input('password'));
     $user->update($validatedData);
-    if ($request->has('password')) {
-        $user->password = bcrypt($request->input('password'));
-    }
-    $user->save();
-
     return response()->json(['message' => 'User updated successfully']);
 }
 
