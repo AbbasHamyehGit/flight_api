@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Passenger;
 use Illuminate\Http\Request;
-use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
+use Illuminate\Validation\Rules\Password;
 
 class PassengerController extends Controller
 {
@@ -85,7 +86,7 @@ public function show(Passenger $passenger)
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:passengers,email,'.$passenger->id,
-            'password' => 'required|string|min:8', // You might want to adjust the minimum length
+            'password' => ['nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
             'date_of_birth' => 'required|date',
             'passport_expiry_date' => 'required|date',
         ];
