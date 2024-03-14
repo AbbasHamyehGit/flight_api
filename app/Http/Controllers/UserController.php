@@ -33,7 +33,7 @@ class UserController extends Controller
         // Create a new user instance
         $user = User::create($validatedData);
 
-        return response()->json(['message' => 'User added successfully'], 201);
+        return response()->json(['message' => 'User added successfully']);
     }
 
     public function update(Request $request, User $user)
