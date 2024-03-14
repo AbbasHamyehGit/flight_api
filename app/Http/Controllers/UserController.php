@@ -28,12 +28,12 @@ class UserController extends Controller
         ]);
 
         // Generate a secure password using the Str::random() method
-        $validatedData['password'] = bcrypt($request->password);
+        $validatedData['password'] = bcrypt($request->input('password'));
 
         // Create a new user instance
         $user = User::create($validatedData);
 
-        return response()->json(['message' => 'User added successfully']);
+        return response()->json($user);
     }
 
     public function update(Request $request, User $user)
@@ -48,7 +48,7 @@ class UserController extends Controller
     // Update user information
     $user->update($validatedData);
     if ($request->has('password')) {
-        $user->password = bcrypt($request->password);
+        $user->password = bcrypt($request->input('password'));
     }
     $user->save();
 
