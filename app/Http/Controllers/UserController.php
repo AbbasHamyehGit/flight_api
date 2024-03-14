@@ -36,35 +36,31 @@ class UserController extends Controller
         return response()->json(['message' => 'User added successfully'], 201);
     }
 
-    public function update(Request $request, $id)
-    {
-        // Validate incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|min:2|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'password' => ['nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
-        ]);
+    public function update(Request $request, User $user)
+{
+    // Validate incoming request data
+    $validatedData = $request->validate([
+        'name' => 'required|string|min:2|max:255',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'password' => ['nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
+    ]);
 
-        // Find the user by ID
-        $user = User::findOrFail($id);
-
-        // Update user information
-        $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
-        if ($request->has('password')) {
-            $user->password = bcrypt($request->password);
-        }
-        $user->save();
-
-        return response()->json(['message' => 'User updated successfully']);
+    // Update user information
+    $user->update($validatedData);
+    if ($request->has('password')) {
+        $user->password = bcrypt($request->password);
     }
+    $user->save();
 
-    public function destroy($id)
-    {
-        // Find the user by ID and delete
-        $user = User::findOrFail($id);
-        $user->delete();
+    return response()->json(['message' => 'User updated successfully']);
+}
 
-        return response()->json(['message' => 'User deleted successfully']);
-    }
+public function destroy(User $user)
+{
+    // Delete the user
+    $user->delete();
+
+    return response()->json(['message' => 'User deleted successfully']);
+}
+
 }

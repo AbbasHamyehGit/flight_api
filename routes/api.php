@@ -26,7 +26,7 @@ Route::apiResource('passengers',PassengerController::class);
 Route::get('/users/{user}',[UserController::class,'show']);
 Route::get('/users',[UserController::class,'index']);
 Route::post('/users', [UserController::class, 'store']);
-Route::put('/users/{id}', [UserController::class, 'update']);
+Route::put('/users/{user}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::fallback(function () {
