@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('flights', FlightController::class);
 Route::apiResource('passengers',PassengerController::class);
 Route::get('/users/{user}',[UserController::class,'show']);
+Route::get('/users',[UserController::class,'index']);
 Route::post('/users', [UserController::class, 'store']);
 Route::put('/users/{id}', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);

@@ -1,12 +1,18 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
+    public function index(){
+    
+        return response()->json(User::all());
+    }
     public function show(User $user)
     {
         return response()->json($user);
@@ -18,11 +24,11 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|min:2|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:6',
+            'password' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
         ]);
 
-        // Generate a secure password using the password helper
-        $validatedData['password'] = Str::password();
+        // Generate a secure password using the Str::random() method
+        $validatedData['password'] = bcrypt($request->password);
 
         // Create a new user instance
         $user = User::create($validatedData);
@@ -36,7 +42,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|min:2|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:6',
+            'password' => ['nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
         ]);
 
         // Find the user by ID
@@ -46,7 +52,7 @@ class UserController extends Controller
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         if ($request->has('password')) {
-            $user->password = Str::password();
+            $user->password = bcrypt($request->password);
         }
         $user->save();
 
