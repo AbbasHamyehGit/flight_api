@@ -1,0 +1,299 @@
+[33mcommit 2274c3ac3916bc6b3d77f6c1130f1a0ea63384c4[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Tue Mar 19 11:36:25 2024 +0200
+
+    creating a SuperAdminSeeder to assign the super admin role to a user
+
+[33mcommit da228c685a8cb91a91f9fea0e1ec9dbdb0a4fb47[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Tue Mar 19 10:40:01 2024 +0200
+
+    installing the spatie/laravel-permission library
+
+[33mcommit 745bc8d0a36addb59139a4adb7f7a59988f50d27[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 14:15:23 2024 +0200
+
+    making the routes for the user an apiResource
+
+[33mcommit abb19d92af065cc8a66263f0decae4e31d4f571a[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 14:12:08 2024 +0200
+
+    updating the code in the userController and removing unwanted method in the passenger controller
+
+[33mcommit 7215da43e6c2f846df3b8318defd27669504250e[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 14:07:30 2024 +0200
+
+    returning the user in the create method and updating the password code
+
+[33mcommit 10e4d64fc86f94619b81d91b1463f6e4251c5b81[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 14:01:21 2024 +0200
+
+    removing the status code from the json response
+
+[33mcommit 31ecf1573e57bbbdeb5c5770cc66aa4a0d84d07a[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 13:02:27 2024 +0200
+
+    adding the password helper and hashing the password using bcrypt in the create and update passenger in PassengerController
+
+[33mcommit 0a9489d9a1a141bc03f46e083f76544dca012d39[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 12:53:12 2024 +0200
+
+    adding the password helper to the passenger controller
+
+[33mcommit df35319ad65cce567739036e298960445415bf0d[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 12:43:53 2024 +0200
+
+    updating the route
+
+[33mcommit 59a2be2b2190e9ab4d960f9a1055bcd507e1e281[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 12:41:20 2024 +0200
+
+    using the eloquent  instead of
+
+[33mcommit f01aa05e36db46d14e28054d2ecbe8c86c85c314[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 12:00:40 2024 +0200
+
+    adding an index function to get all users in the database
+
+[33mcommit d80340dfb4a063523c93330d9fab3d528be4d9a5[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 14 11:35:46 2024 +0200
+
+    moving the routes to the api.php instead of web.php
+
+[33mcommit 084a0b9d8d26a5b9cfdf4c9ed65ff3874a894201[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 13 16:15:52 2024 +0200
+
+    adding the passowrd helper to the user cotroller
+
+[33mcommit 66c11fc7aed74ed05c9b0190f1551db0b324aaa8[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 13 15:34:38 2024 +0200
+
+    updating the show method in the user controller
+
+[33mcommit c843341b318ca7c9a70ae4bea8cadb4c3d55fdd1[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 13 14:24:11 2024 +0200
+
+    updating the filter method in the flight and passenger controller using the exact keyword to correctly filter by id
+
+[33mcommit 841b3a8af107718a6854318f9934441889cd3a68[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 13 13:36:52 2024 +0200
+
+    fixing the show methods in the Flight and Passenger Controllers
+
+[33mcommit 5438c943c809fa238145de850a35bc7fa799efb4[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Tue Mar 12 16:13:40 2024 +0200
+
+    updating the userController to follow the name convention and adding validators
+
+[33mcommit 55354ccd78e1510619dac47555edf5c6cd5be457[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Tue Mar 12 16:03:33 2024 +0200
+
+    adding validation to the update and store functions in the passengerController
+
+[33mcommit 4f5b9dae270a9076681c448b6b6d2ee0014439c8[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Tue Mar 12 15:58:43 2024 +0200
+
+    fixing some bugs and optimizing the code in the flight and passengers controllers
+
+[33mcommit 85c52909bf5e27eaf3221d5e13a9a9f572aaef81[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Mon Mar 11 16:36:07 2024 +0200
+
+    adding authentication to view if users are in the db or not
+
+[33mcommit 3ff151710392ec9250085d800782b957a820f3fb[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sun Mar 10 18:47:01 2024 +0200
+
+    adding the show and addUser and updateUser and deleteUser method to the userController class and testing all of it using postman
+
+[33mcommit 868739e62edbcce2a9b53dc74b72056ec5a37d46[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sun Mar 10 18:12:50 2024 +0200
+
+    adding a fallback route that redirect to the welcome page
+
+[33mcommit 07bfa80263fd7d2906c64903a0844eeb2a7250f7[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sun Mar 10 17:54:15 2024 +0200
+
+    applying eager loading to the show function in the FlightController class
+
+[33mcommit af60215061fd584673aedf27c9fab49d618df41a[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sat Mar 9 20:02:32 2024 +0200
+
+    creating crud operations for the passenger table
+
+[33mcommit 1dfc91f8418387c1d295859d62bb81a3d88ff978[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sat Mar 9 19:40:29 2024 +0200
+
+    creating the crud operations for the flight table
+
+[33mcommit 33802fa09d84d588f106ce6eae7d8d96ad719b54[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 7 12:29:35 2024 +0200
+
+    updating the flight crud controller and removing the pagination from the show method
+
+[33mcommit 44666bdba82f1521c3bf359302829605ba05345b[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Mar 7 10:47:16 2024 +0200
+
+    creating a crud resource controller for the flight
+
+[33mcommit 46c7e5a826d9c6d9523045b70608d7a7b25d079f[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 6 19:58:18 2024 +0200
+
+    modify the code to show the flight with its passengers
+
+[33mcommit 897c274425ddfbff409f6f0984311fffcb84d696[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 6 19:47:34 2024 +0200
+
+    changing the pagination to 100 instead of 10
+
+[33mcommit 3dae5004dd7efb2fd93e245cd234cf77e70e8214[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 6 19:46:43 2024 +0200
+
+    editing the filtering methods in the flight and passenger controllers
+
+[33mcommit 0cde8e1e3a0089b163daf03fbab42a57145c5f4a[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 6 13:30:10 2024 +0200
+
+    fixing the departure and arrival time issue in the flight table
+
+[33mcommit 178c9982572fcf1de85d6efb576c8a36c6f19619[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 6 12:57:11 2024 +0200
+
+    adding the sorting and filtering method from the spatie package to the flight and passenger and testing it successfully
+
+[33mcommit ba199d4c5afa3275e6f29d6ea4ed95c6c01cf639[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 6 12:37:16 2024 +0200
+
+    adding the spatie package to the FlightController and changing the getFlightPassengers name to show
+
+[33mcommit 01aa0e610b8b6a2b6d6569d95cf065a54747b8ed[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 6 11:57:04 2024 +0200
+
+    testing
+
+[33mcommit 7da3f17ca57c94026ba6682e72a41ff532b100da[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Mar 6 11:55:46 2024 +0200
+
+    assigning passengers to flights in the pivot table in the DatabaseSeeder file instead of using and artisan command
+
+[33mcommit 3653686d7975cbfda33d22670a5911b33899b48b[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sun Mar 3 14:36:07 2024 +0200
+
+    assigning passengers to flights randomly
+
+[33mcommit 88b83d996db3f5377c620225b5561eea534b1be4[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sun Mar 3 13:39:01 2024 +0200
+
+    fixing some simple bugs
+
+[33mcommit 502351c9108571a2b6c6bfbddc4c05f7acd908a0[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sun Mar 3 13:18:43 2024 +0200
+
+    reverting the user to the initial state
+
+[33mcommit 8a9983aad4a9a232b443faeecd95b40857fc33d7[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sun Mar 3 13:12:44 2024 +0200
+
+    addding the guarded method to the passenger and flight models
+
+[33mcommit 8036dfa3d1d35f3d8622bd2ee7e6d72788fab444[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Sun Mar 3 13:01:27 2024 +0200
+
+    updating the departure and arrival time in the FlightSeeder to be in a logical time format
+
+[33mcommit ff64ab38ac547f82233cd9e5c5df46fcc5d15cae[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Feb 29 11:37:48 2024 +0200
+
+    changing the flights_passenger code and using the foreignId and constrained methods
+
+[33mcommit e82ac6d12631d2ef2539ae307dc62ce16ab82099[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Feb 29 11:24:51 2024 +0200
+
+    Create an API to retrieve all users belonging to a requested flight
+
+[33mcommit 3f0415f0a175d653ed0c7bd47b5871538c2ac9b2[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Feb 29 11:12:06 2024 +0200
+
+    Create an API to get all passengers from the database with pagination, filtering
+
+[33mcommit 5163c73f5b4757f63ab2965435dbfef24b4821dd[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Feb 29 11:04:34 2024 +0200
+
+    Creating an API to get all flights with pagination, filtering, and sorting
+
+[33mcommit cdaabbed9c9169d7e59dd08d0b863b5aa5308e71[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Thu Feb 29 10:44:39 2024 +0200
+
+    creating the api to get all users from the db
+
+[33mcommit ef465281511d6d61cfccb08b226defbd5b35654f[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Feb 28 11:12:37 2024 +0200
+
+    fixing some bugs and seeding the database
+
+[33mcommit cca5a5b2f4a908d49b7c1205324752dc4c2b5b09[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Feb 28 10:34:32 2024 +0200
+
+    fixing some bugs in migration and seeders
+
+[33mcommit 3b88a44af0f72f133abd1f368d821c13d857404b[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Wed Feb 28 10:28:55 2024 +0200
+
+    changing column name format to snake_case and preventing the acronyms
+
+[33mcommit 1a2d392967498f169f20dd73d4087d05b67d5fea[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Tue Feb 27 14:59:57 2024 +0200
+
+    first commit
+
+[33mcommit 63c2fd5b1d5392344f21a89bce48d9aa8bc37c18[m
+Author: Your Name <abbashamyehonline2004@gmail.com>
+Date:   Tue Feb 27 14:59:15 2024 +0200
+
+    first commit
