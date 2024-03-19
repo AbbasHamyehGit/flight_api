@@ -58,4 +58,22 @@ public function destroy(User $user)
     return response()->json(['message' => 'User deleted successfully']);
 }
 
+
+
+public function isadmin ($id){
+   
+    $user = User::find($id);
+
+    // Check if the user has a specific role
+    if ($user->hasRole('super-admin')) {
+        // Role is assigned
+        return response()->json(['message' => 'admin']);
+}
+    else {
+        // Role is not assigned
+        return response()->json(['message' => 'not admin']);
+}
+ 
+    }
+    
 }

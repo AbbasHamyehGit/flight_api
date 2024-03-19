@@ -25,3 +25,4 @@ Route::apiResource('flights', FlightController::class);
 Route::apiResource('passengers',PassengerController::class);
 Route::post('/login', [LoginController::class, 'login']);
 Route::apiResource('users', UserController::class);
+Route::get('/users/admin/{id}',[UserController::class,'isadmin']);
