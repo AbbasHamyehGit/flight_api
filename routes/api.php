@@ -25,6 +25,7 @@ Route::apiResource('flights', FlightController::class);
 Route::apiResource('passengers',PassengerController::class);
 
 Route::apiResource('users', UserController::class);
+Route::get('/export',[UserController::class ,'export'])->name('export.users');
 Route::get('/users/admin/{id}',[UserController::class,'isadmin']);
 
 

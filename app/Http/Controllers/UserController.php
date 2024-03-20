@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Str;
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
@@ -75,5 +77,26 @@ public function isadmin ($id){
 }
  
     }
+    
+
+    public function export()
+    {
+        // Fetch users from the database
+        $users = User::all();
+    
+        // Set headers for download
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="users.csv"');
+        header('Cache-Control: max-age=0');
+    
+        // Output Excel file content
+        echo "Name\t\t\tEmail\n"; // Tab-separated values for Excel
+        foreach ($users as $user) {
+            echo $user->name . "\t"  ."\t"."\t" . $user->email . "\n"; // Tab-separated values for Excel
+        }
+    
+        exit;
+    }
+    
     
 }
