@@ -7,13 +7,19 @@ use Illuminate\Support\Str;
 use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function index(){
-    
-        return response()->json(User::all());
+    public function index()
+    {
+        // Check if users data exists in cache
+        $users = Cache::remember('users', 10, function () {
+            return User::all();
+        });
+
+        return response()->json($users);
     }
     public function show(User $user)
     {
