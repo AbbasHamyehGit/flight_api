@@ -30,7 +30,7 @@ Route::get('/users/admin/{id}',[UserController::class,'isadmin']);
 
 
 // Login route
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:rate_limit,1');;
 
 // Logout route
 Route::post('/logout', [AuthController::class, 'logout']);//->middleware('auth:sanctum');
