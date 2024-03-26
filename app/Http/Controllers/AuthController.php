@@ -39,47 +39,28 @@ class AuthController extends Controller
     }
 
 
-    // public function logout($id)
-    // {
-    //     // Get the user
-    //     $user = User::find($id);
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
     
-    //     // Check if the user has a valid current access token
-    //     $currentToken = $user->tokens()
-    //         ->where('name', 'apiToken')
-    //         ->where('created_at', '>=', Carbon::now()->subDays(1))
-    //         ->first();
-    
-    //     if ($currentToken) {
-    //         // The user has a valid current access token, delete it
-    //         $currentToken->delete();
-    
-    //         return [
-    //             'message' => 'user logged out'
-    //         ];
-    //     } else {
-    //         // The user does not have a valid current access token
-    //         return [
-    //             'message' => 'user has no valid access token'
-    //         ];
-    //     }
-    // }
-public function logout(Request $request)
-{
-    // Retrieve the user's tokens from the database
-    $tokens = PersonalAccessToken::where('tokenable_type', 'App\Models\User')
-        ->whereIn('token', $request->bearerToken())
-        ->get();
-
-    // Delete each token
-    foreach ($tokens as $token) {
-        $token->delete();
+        return response()->json(['message' => 'Logged out successfully']);
     }
+// public function logout(Request $request)
+// {
+//     // Retrieve the user's tokens from the database
+//     $tokens = PersonalAccessToken::where('tokenable_type', 'App\Models\User')
+//         ->whereIn('token', $request->bearerToken())
+//         ->get();
 
-    // Return a success message
-    return [
-        'message' => 'user logged out'
-    ];
-}
+//     // Delete each token
+//     foreach ($tokens as $token) {
+//         $token->delete();
+//     }
+
+//     // Return a success message
+//     return [
+//         'message' => 'user logged out'
+//     ];
+// }
 
 }
