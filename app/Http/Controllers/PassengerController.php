@@ -7,21 +7,28 @@ use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Cache;
+
 
 class PassengerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-   public function index(Request $request)
+    public function index(Request $request)
     {
-        $passengers = QueryBuilder::for(Passenger::class)
-            ->allowedFilters([AllowedFilter::exact('id'),'first_name', 'last_name','date_of_birth','passport_expiry_date'])
-            ->allowedSorts(['first_name', 'last_name','date_of_birth','passport_expiry_date'])
-            ->paginate($request->input('per_page', 100));
-
-        return response()->json($passengers);
-    } 
+        $cacheKey = 'passengers_' . $request->fullUrl();
+    
+        return Cache::remember($cacheKey, now()->addMinutes(1), function () use ($request) {
+            $passengers = QueryBuilder::for(Passenger::class)
+                ->allowedFilters([AllowedFilter::exact('id'),'first_name', 'last_name','date_of_birth','passport_expiry_date'])
+                ->allowedSorts(['first_name', 'last_name','date_of_birth','passport_expiry_date'])
+                ->paginate($request->input('per_page', 100));
+    
+            return response()->json($passengers);
+        });
+    }
+    
 
     
    
@@ -81,10 +88,18 @@ class PassengerController extends Controller
      
 
   
-public function show(Passenger $passenger)
-{
-    return response()->json($passenger);
-}
+
+     public function show(Passenger $passenger)
+     {
+         $cacheKey = 'passenger_' . $passenger->id;
+     
+         return Cache::remember($cacheKey, now()->addMinutes(10), function () use ($passenger) {
+             return response()->json($passenger);
+             
+         });
+         
+     }
+     
 
    
     public function destroy(Passenger $passenger)
