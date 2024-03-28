@@ -20,7 +20,9 @@ class VerifyCsrfToken extends Middleware
             '/users',
             '/users/*',
             'login',
-            '/logout'
+            '/logout',
+            'import',
+            '/import'
         ];
         
     
