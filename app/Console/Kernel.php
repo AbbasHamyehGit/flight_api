@@ -2,9 +2,9 @@
 
 namespace App\Console;
 
-
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Console\Commands\SendFlightReminders; // Import the SendFlightReminders command
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // Schedule the SendFlightReminders command to run every minute
+        $schedule->command(SendFlightReminders::class)->daily();
     }
     
     /**
