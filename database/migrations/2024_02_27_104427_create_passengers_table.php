@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->dateTime('date_of_birth');
             $table->dateTime('passport_expiry_date');
+            $table->string('image');
+            $table->string('thumbnail');
             $table->timestamps();
         });
     }
