@@ -21,6 +21,7 @@ class UserController extends Controller
 
         return response()->json($users);
     }
+
     public function show(User $user)
     {
         return response()->json($user);
@@ -28,7 +29,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // Validate incoming request data
+        // Validate and sanitize incoming request data
         $validatedData = $request->validate([
             'name' => 'required|string|min:2|max:255',
             'email' => 'required|email|unique:users',
@@ -45,64 +46,61 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user)
-{
-    // Validate incoming request data
-    $validatedData = $request->validate([
-        'name' => 'required|string|min:2|max:255',
-        'email' => 'required|email|unique:users,email,' . $user->id,
-        'password' => ['nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
-    ]);
+    {
+        // Validate and sanitize incoming request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|min:2|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => ['nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
+        ]);
 
-    $validatedData['password'] = bcrypt($request->input('password'));
-    $user->update($validatedData);
-    return response()->json(['message' => 'User updated successfully']);
-}
+        // Update password if provided
+        if ($request->has('password')) {
+            $validatedData['password'] = bcrypt($request->input('password'));
+        }
 
-public function destroy(User $user)
-{
-    // Delete the user
-    $user->delete();
+        $user->update($validatedData);
 
-    return response()->json(['message' => 'User deleted successfully']);
-}
-
-
-
-public function isadmin ($id){
-   
-    $user = User::find($id);
-
-    // Check if the user has a specific role
-    if ($user->hasRole('super-admin')) {
-        // Role is assigned
-        return response()->json(['message' => 'admin']);
-}
-    else {
-        // Role is not assigned
-        return response()->json(['message' => 'not admin']);
-}
- 
+        return response()->json(['message' => 'User updated successfully']);
     }
-    
 
+    public function destroy(User $user)
+    {
+        // Delete the user
+        $user->delete();
+
+        return response()->json(['message' => 'User deleted successfully']);
+    }
+
+    public function isadmin($id)
+    {
+        $user = User::find($id);
+
+        // Check if the user exists and has a specific role
+        if ($user && $user->hasRole('super-admin')) {
+            return response()->json(['message' => 'admin']);
+        } else {
+            return response()->json(['message' => 'not admin']);
+        }
+    }
+
+    // Method for exporting users to a CSV file
     public function export()
     {
         // Fetch users from the database
         $users = User::all();
-    
+
         // Set headers for download
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="users.csv"');
         header('Cache-Control: max-age=0');
-    
-        // Output Excel file content
-        echo "Name\t\t\tEmail\n"; // Tab-separated values for Excel
+
+        // Output CSV file content
+        echo "Name,Email\n";
         foreach ($users as $user) {
-            echo $user->name . "\t"  ."\t"."\t" . $user->email . "\n"; // Tab-separated values for Excel
+            echo "{$user->name},{$user->email}\n";
         }
-    
+
         exit;
     }
-    
-    
 }
